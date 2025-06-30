@@ -23,7 +23,7 @@ const COINS = [
     current_price: 3421.75,
     high_24h: 3489.2,
     low_24h: 3398.1,
-    price_change_percentage_24h: -1.24567,
+    price_change_percentage_24h: 0,
   },
   {
     id: "tether",
@@ -713,15 +713,13 @@ const CoinsList = () => {
   return (
     <Wrapper>
       {COINS.map((coin) => {
-        const hasPositivePriceChangeTheLast24Hours =
-          coin.price_change_percentage_24h > 0;
-
-        const last24$HoursPercentage = Number(
+        const last24HoursPercentage = Number(
           coin.price_change_percentage_24h.toFixed(2)
         );
 
         return (
           <CoinPriceCard
+            key={coin.id}
             name={coin.name}
             image={coin.image}
             shortName={coin.symbol}
@@ -729,10 +727,7 @@ const CoinsList = () => {
             currentPrice={coin.current_price}
             highestTwentyFourHourPrice={coin.high_24h}
             LowestTwentyFourHourPrice={coin.low_24h}
-            twentyFourPriceChangePercentage={{
-              isPositive: hasPositivePriceChangeTheLast24Hours,
-              percentage: last24$HoursPercentage,
-            }}
+            twentyFourPriceChangePercentage={last24HoursPercentage}
           />
         );
       })}

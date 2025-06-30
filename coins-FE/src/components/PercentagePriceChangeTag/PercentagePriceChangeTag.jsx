@@ -5,15 +5,32 @@ import {
   TrendArrowDown,
 } from "./PercentagePriceChangeTag.styles";
 
-const PercentagePriceChangeTag = ({ hasPriceIncreased, percentage }) => {
+const getPercentageChangeMetric = (priceChangePercentage) => {
+  if (priceChangePercentage > 0) return "positive";
+  if (priceChangePercentage < 0) return "negative";
+
+  return "neutral";
+};
+
+const CHART_LINES = {
+  positive: <TrendArrowUp />,
+  negative: <TrendArrowDown />,
+  neutral: null,
+};
+
+const PercentagePriceChangeTag = ({ percentage }) => {
+  const percentageChange = getPercentageChangeMetric(percentage);
+
+  const hasPriceIncreased = percentageChange === "positive";
+
   const arithmeticSign = hasPriceIncreased ? "+" : "";
 
   return (
-    <Wrapper hasPriceIncreased={hasPriceIncreased}>
-      {hasPriceIncreased ? <TrendArrowUp /> : <TrendArrowDown />}
+    <Wrapper $percentageChange={percentageChange}>
+      {CHART_LINES[percentageChange]}
 
       <PercentageWrapper
-        hasPriceIncreased={hasPriceIncreased}
+        $percentageChange={percentageChange}
       >{`${arithmeticSign}${percentage}%`}</PercentageWrapper>
     </Wrapper>
   );

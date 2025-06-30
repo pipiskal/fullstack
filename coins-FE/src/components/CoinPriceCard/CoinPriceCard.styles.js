@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  position: relative;
+  top: 0;
   width: 100%;
   min-width: 400px;
-
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -11,6 +12,15 @@ export const Wrapper = styled.div`
   border-radius: 14px;
   border: 1px solid #2e3948;
   background-color: #171f2c;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #3e4b5a;
+    background-color: #1e2735;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    top: -2px;
+  }
 `;
 
 export const TitleAndPriceChangePercentage = styled.div`

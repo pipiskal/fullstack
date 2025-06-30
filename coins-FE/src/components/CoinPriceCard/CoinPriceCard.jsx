@@ -32,8 +32,7 @@ const CoinPriceCard = ({
         />
 
         <PercentagePriceChangeTag
-          hasPriceIncreased={twentyFourPriceChangePercentage.isPositive}
-          percentage={twentyFourPriceChangePercentage.percentage}
+          percentage={twentyFourPriceChangePercentage}
         />
       </TitleAndPriceChangePercentage>
 

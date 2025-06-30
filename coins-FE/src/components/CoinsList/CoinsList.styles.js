@@ -3,15 +3,22 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  margin: 20px 0;
-  padding: 0 24px;
+  grid-gap: 32px;
+  margin: 32px 0;
+  padding: 0 64px;
+  transition: all 0.3s ease;
 
   @media (max-width: 1440px) {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0 16px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
+    padding: 0 32px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 8px;
   }
 `;
