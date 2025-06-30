@@ -20,9 +20,10 @@ const CoinPriceCard = ({
   highestTwentyFourHourPrice,
   LowestTwentyFourHourPrice,
   twentyFourPriceChangePercentage,
+  onClickCard,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClickCard}>
       <TitleAndPriceChangePercentage>
         <CoinAvatar
           image={image}

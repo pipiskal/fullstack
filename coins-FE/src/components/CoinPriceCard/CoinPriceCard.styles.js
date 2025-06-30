@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   background-color: #171f2c;
   transition: all 0.3s ease;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     border: 1px solid #3e4b5a;
