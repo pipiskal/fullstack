@@ -1,6 +1,6 @@
 // import {} from './PriceTag.styles';
 
-const PriceTag = () => {
+const TwentyFourHourPriceChangeTag = () => {
   return (
     <div>
       Will hold the up or down price icon with the color logicc positive or
@@ -9,4 +9,4 @@ const PriceTag = () => {
   );
 };
 
-export default PriceTag;
+export default TwentyFourHourPriceChangeTag;
