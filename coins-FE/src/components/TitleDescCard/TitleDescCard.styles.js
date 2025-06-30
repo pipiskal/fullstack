@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 400;
   color: #9ea6b3;
 `;

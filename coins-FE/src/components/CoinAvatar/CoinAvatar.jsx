@@ -9,7 +9,7 @@ import {
 const CoinAvatar = ({ image, name, shortName }) => {
   return (
     <Wrapper>
-      <CoinImage src={image} alt={`bitcoin image ${shortName}`} />
+      <CoinImage src={image} alt={`coin symbol ${shortName}`} />
 
       <InformationWrapper>
         <Name>{name}</Name>

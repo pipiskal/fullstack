@@ -6,26 +6,25 @@ export const Wrapper = styled.div`
 `;
 
 export const CoinImage = styled.img`
-  width: 40px;
-  min-width: 40px;
-  height: 40px;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
   border-radius: 50%;
 `;
 
 export const InformationWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
 `;
 
 export const Name = styled.span`
-  font-size: 20px;
-  font-weight: 500;
-  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f8f8f8;
 `;
 
 export const ShortName = styled.span`
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
-  color: white;
+  color: #929aa6;
 `;
