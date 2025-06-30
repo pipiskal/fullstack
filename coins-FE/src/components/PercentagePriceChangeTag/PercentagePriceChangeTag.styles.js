@@ -7,14 +7,13 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(props) =>
-    props.hasPriceIncreased ? "#1B4739" : "rgb(242, 57, 57)"};
+    props.hasPriceIncreased ? "#1B4739" : "#f23939d9"};
   border-radius: 20px;
   padding: 2px 8px;
 `;
 
 export const PercentageWrapper = styled.span`
-  color: ${(props) =>
-    props.hasPriceIncreased ? "#49dc7f" : "rgb(255, 255, 255)"};
+  color: ${(props) => (props.hasPriceIncreased ? "#49dc7f" : "#f8f8f8")};
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.7px;

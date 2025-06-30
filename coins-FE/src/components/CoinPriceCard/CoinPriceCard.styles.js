@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 24px;
+  padding: 24px 32px;
   border-radius: 14px;
   border: 1px solid #2e3948;
   background-color: #171f2c;
@@ -36,4 +36,7 @@ export const Price = styled.span`
   color: #f8f8f8;
 `;
 
-export const TwentyFourHourHighAndLow = styled.div``;
+export const TwentyFourHourHighAndLowPrices = styled.div`
+  display: flex;
+  gap: 24px;
+`;

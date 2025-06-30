@@ -12,10 +12,10 @@ const App = () => {
         shortName="BTC"
         currencySymbol="$"
         currentPrice={3200023}
-        highestTwentyFourHourPrice={3200023}
-        LowestTwentyFourHourPrice={23009932}
+        highestTwentyFourHourPrice={32000.23}
+        LowestTwentyFourHourPrice={230099.32}
         twentyFourPriceChangePercentage={{
-          isPositive: false,
+          isPositive: true,
           percentage: 2.45,
         }}
       />

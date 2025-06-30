@@ -2,14 +2,14 @@ import {
   Wrapper,
   TitleAndPriceChangePercentage,
   CurrentPriceWrapper,
-  TwentyFourHourHighAndLow,
+  TwentyFourHourHighAndLowPrices,
   Label,
   Price,
 } from "./CoinPriceCard.styles";
 
 import CoinAvatar from "./../CoinAvatar/CoinAvatar";
 import PercentagePriceChangeTag from "../PercentagePriceChangeTag/PercentagePriceChangeTag";
-import TitleDescCard from "./../TitleDescCard/TitleDescCard";
+import TwentyFourHoursPriceCard from "../TwentyFourHoursPriceCard/TwentyFourHoursPriceCard";
 
 const CoinPriceCard = ({
   name,
@@ -38,16 +38,24 @@ const CoinPriceCard = ({
       </TitleAndPriceChangePercentage>
 
       <CurrentPriceWrapper>
-        <Label> Current Price</Label>
+        <Label>Current Price</Label>
 
         <Price>{`${currencySymbol}${currentPrice}`}</Price>
       </CurrentPriceWrapper>
 
-      {/* <TwentyFourHourHighAndLow>
-        <TitleDescCard title={"24h HIGH"} desc={highestTwentyFourHourPrice} />
+      <TwentyFourHourHighAndLowPrices>
+        <TwentyFourHoursPriceCard
+          type={"high"}
+          currencySymbol={currencySymbol}
+          price={highestTwentyFourHourPrice}
+        />
 
-        <TitleDescCard title={"24h LOW"} desc={LowestTwentyFourHourPrice} />
-      </TwentyFourHourHighAndLow> */}
+        <TwentyFourHoursPriceCard
+          type={"low"}
+          currencySymbol={currencySymbol}
+          price={LowestTwentyFourHourPrice}
+        />
+      </TwentyFourHourHighAndLowPrices>
     </Wrapper>
   );
 };
