@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
+  min-width: 400px;
+
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -20,7 +22,6 @@ export const TitleAndPriceChangePercentage = styled.div`
 export const CurrentPriceWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: 4px;
 `;
 
