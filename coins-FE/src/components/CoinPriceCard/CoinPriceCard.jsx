@@ -12,7 +12,8 @@ import TitleDescCard from "./../TitleDescCard/TitleDescCard";
 const CoinPriceCard = ({
   name,
   shortName,
-  coinSymbol,
+  image,
+  currencySymbol,
   currentPrice,
   highestTwentyFourHourPrice,
   LowestTwentyFourHourPrice,
@@ -21,7 +22,12 @@ const CoinPriceCard = ({
   return (
     <Wrapper>
       <TitleAndPriceChangePercentage>
-        <CoinAvatar img={coinSymbol} title={name} shortName={shortName} />
+        <CoinAvatar
+          image={image}
+          title={name}
+          shortName={shortName}
+          name={name}
+        />
 
         <TwentyFourHourPriceChangePercentage
           isPositive={twentyFourPriceChangePercentage.isPositive}
@@ -29,17 +35,17 @@ const CoinPriceCard = ({
         />
       </TitleAndPriceChangePercentage>
 
-      <CurrentPrice>
+      {/* <CurrentPrice>
         <p>{currentPrice.symbol}</p>
 
         <p>{currentPrice.total}</p>
-      </CurrentPrice>
+      </CurrentPrice> */}
 
-      <TwentyFourHourHighAndLow>
+      {/* <TwentyFourHourHighAndLow>
         <TitleDescCard title={"24h HIGH"} desc={highestTwentyFourHourPrice} />
 
         <TitleDescCard title={"24h LOW"} desc={LowestTwentyFourHourPrice} />
-      </TwentyFourHourHighAndLow>
+      </TwentyFourHourHighAndLow> */}
     </Wrapper>
   );
 };
