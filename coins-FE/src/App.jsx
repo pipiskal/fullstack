@@ -15,8 +15,8 @@ const App = () => {
         highestTwentyFourHourPrice={3200023}
         LowestTwentyFourHourPrice={23009932}
         twentyFourPriceChangePercentage={{
-          isPositive: true,
-          percentage: "23",
+          isPositive: false,
+          percentage: 2.45,
         }}
       />
     </Wrapper>
