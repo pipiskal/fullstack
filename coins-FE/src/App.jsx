@@ -1,12 +1,13 @@
-import "./App.css";
-import Card from "./components/Card/Card";
+import { Title, Wrapper } from "./App.styles";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Card />
-    </>
+    <Wrapper>
+      <Title>Coins Price List </Title>
+
+      <div>test</div>
+    </Wrapper>
   );
-}
+};
 
 export default App;
