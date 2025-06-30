@@ -1,14 +1,21 @@
 import { Wrapper } from "./CoinsList.styles";
 import CoinPriceCard from "../CoinPriceCard/CoinPriceCard";
 import { CURRENCY_SYMBOL } from "../../common/consts";
+import React from "react";
 
-const CoinsList = ({ coins, onClickCoinCard }) => {
+const CoinsList = React.memo(({ coins, onClickCoinCard }) => {
   return (
     <Wrapper>
       {coins.map((coin) => {
         const last24HoursPercentage = Number(
           coin.price_change_percentage_24h.toFixed(2)
         );
+
+        const formattedPrice = Intl.NumberFormat("en-US", {
+          style: "decimal",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }).format(coin.current_price);
 
         return (
           <CoinPriceCard
@@ -17,7 +24,7 @@ const CoinsList = ({ coins, onClickCoinCard }) => {
             image={coin.image}
             shortName={coin.symbol}
             currencySymbol={CURRENCY_SYMBOL}
-            currentPrice={coin.current_price}
+            currentPrice={formattedPrice}
             highestTwentyFourHourPrice={coin.high_24h}
             LowestTwentyFourHourPrice={coin.low_24h}
             twentyFourPriceChangePercentage={last24HoursPercentage}
@@ -27,6 +34,6 @@ const CoinsList = ({ coins, onClickCoinCard }) => {
       })}
     </Wrapper>
   );
-};
+});
 
 export default CoinsList;

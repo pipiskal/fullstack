@@ -1,7 +1,7 @@
 import { Title, Wrapper } from "./App.styles";
 import CoinsList from "./components/CoinsList/CoinsList";
 import CoinDetailsModal from "./components/CoinDetailsModal/CoinDetailsModal.jsx";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 
 const COINS = [
   {
@@ -717,16 +717,11 @@ const App = () => {
     setSelectedCoinId(coinId);
   };
 
-  const COINS_LIST = useMemo(
-    () => <CoinsList coins={COINS} onClickCoinCard={handleClickCoinCard} />,
-    []
-  );
-
   return (
     <Wrapper>
       <Title>Coins Price List </Title>
 
-      {COINS_LIST}
+      <CoinsList coins={COINS} onClickCoinCard={handleClickCoinCard} />
 
       <CoinDetailsModal
         isOpen={Boolean(selectedCoinId)}

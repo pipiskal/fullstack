@@ -21,7 +21,7 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: ${({ $isVisible }) => $isVisible && fadeIn} 300ms ease-out;
+  animation: ${({ $isVisible }) => $isVisible && fadeIn} 0.2s ease-out;
   animation-fill-mode: forwards;
 `;
 
@@ -34,7 +34,7 @@ export const ModalContent = styled.div`
   max-height: 90vh;
   overflow: auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  animation: ${({ $isVisible }) => $isVisible && scaleIn} 300ms ease-out;
+  animation: ${({ $isVisible }) => $isVisible && scaleIn} 0.2s ease-out;
   animation-fill-mode: forwards;
 `;
 
