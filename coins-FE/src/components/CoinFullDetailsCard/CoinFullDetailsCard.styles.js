@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   background-color: #171f2c;
   border: 1px solid #2e3948;
   border-radius: 10px;
+  user-select: none;
 `;
 
 export const Header = styled.div`
