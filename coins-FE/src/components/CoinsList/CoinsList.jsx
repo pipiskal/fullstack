@@ -38,7 +38,7 @@ const CoinsList = React.memo(
                 highestTwentyFourHourPrice={coin.high_24h}
                 LowestTwentyFourHourPrice={coin.low_24h}
                 twentyFourPriceChangePercentage={last24HoursPercentage}
-                onClickCard={() => onClickCoinCard(coin.id)}
+                onClickCard={() => onClickCoinCard(coin)}
                 isDisabled={areCoinsFetching}
               />
             );

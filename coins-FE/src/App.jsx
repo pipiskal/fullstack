@@ -7,7 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import COINS from "./services/coins.js";
 
 const App = () => {
-  const [selectedCoinId, setSelectedCoinId] = useState(null);
+  const [selectedCoin, setSelectedCoin] = useState(null);
+
   const [page, setPage] = useState(1);
 
   const { data, isLoading, isFetching, isError } = useQuery({
@@ -28,13 +29,15 @@ const App = () => {
         areCoinsFetching={isFetching}
         hasError={isError}
         coins={coins}
-        onClickCoinCard={(coinId) => setSelectedCoinId(coinId)}
+        onClickCoinCard={(coin) => setSelectedCoin(coin)}
       />
 
-      <CoinDetailsModal
-        coinId={selectedCoinId}
-        onClose={() => setSelectedCoinId(null)}
-      />
+      {selectedCoin?.id && (
+        <CoinDetailsModal
+          coin={selectedCoin}
+          onClose={() => setSelectedCoin(null)}
+        />
+      )}
     </Wrapper>
   );
 };
