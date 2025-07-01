@@ -21,6 +21,7 @@ const CoinPriceCard = ({
   LowestTwentyFourHourPrice,
   twentyFourPriceChangePercentage,
   onClickCard,
+  isDisabled,
 }) => {
   return (
     <Wrapper onClick={onClickCard}>
