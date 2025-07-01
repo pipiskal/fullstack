@@ -10,7 +10,7 @@ This application displays a comprehensive list of cryptocurrency prices with det
 
 - **Backend**: Used Node-Cache for caching. I could have used Redis but for the scope of the project and to not over engineer it i went with Node-Cache. For the BE thats pretty much it just pure Node and Express. I justed wanted it to work. Most likely i could do more with rate limiting etc. better error handling. More production ready code
 
-- **Comments**: Typescript would be extremely useful but for the scope of the project it was not necessary(Would have taken more time - but it was a complex api with a ton of data so in a real world scenario i totally recommend it).
+- **Comments**: Typescript would be extremely useful but for the scope of the project it was not necessary(Would have taken more time - but it was a complex api with a ton of data so in a real world scenario i totally recommend it). Did not added tests but i have used jest for BE and lately using vitest.
 
 ## 🏗️ Architecture
 
