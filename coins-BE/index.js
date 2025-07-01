@@ -1,6 +1,7 @@
-const express = require("express");
-const app = express();
-const PORT = 3000;
+require("dotenv").config();
+const app = require("./src/app");
+
+const PORT = 4321;
 
 // Start server
 app.listen(PORT, () => {

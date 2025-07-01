@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { getTopCoins } = require("../lib/coinGecko");
+const { getMarkets, getCoinDetails } = require("../lib/coinGecko");
 
 router.get("/", async (req, res, next) => {
   try {
-    const coins = await getTopCoins();
+    const coins = await getMarkets();
+
     res.json({
       data: coins,
     });
   } catch (error) {
-    // res.status(500).json({ error: "Internal Server Error" });
     next(error);
   }
 });
@@ -27,3 +27,5 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+module.exports = router;
