@@ -2,21 +2,32 @@ import { Wrapper, SimpleText } from "./CoinsList.styles";
 import CoinPriceCard from "../CoinPriceCard/CoinPriceCard";
 import { CURRENCY_SYMBOL } from "../../common/consts";
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import COINS from "./../../services/coins";
-import { useState } from "react";
 
 const CoinsList = React.memo(({ onClickCoinCard }) => {
-  const [page, setPage] = useState(1);
-
-  const { data, isLoading, isFetching, isError } = useQuery({
-    queryKey: ["coins", page],
-    queryFn: () => COINS.GET_COINS_MARKETS(page),
+  const {
+    data,
+    isLoading,
+    isFetching,
+    isFetchingNextPage,
+    isError,
+    hasNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["coins"],
+    queryFn: ({ pageParam = 1 }) => COINS.GET_COINS_MARKETS(pageParam),
+    getNextPageParam: (lastPage, allPages) => {
+      // Return next page number if we want to keep loading
+      // Since we don't know total pages, we'll just increment forever
+      return allPages.length + 1;
+    },
+    keepPreviousData: true,
   });
 
-  const coins = data || [];
+  const coins = data?.pages?.flatMap((page) => page) || [];
 
-  if (isLoading) {
+  if (isLoading && coins.length === 0) {
     return <SimpleText>Loading Coins...</SimpleText>;
   }
 
@@ -62,7 +73,15 @@ const CoinsList = React.memo(({ onClickCoinCard }) => {
         })}
       </Wrapper>
 
-      <button onClick={() => setPage(page + 1)}>Load More</button>
+      {hasNextPage && (
+        <button
+          isDisabled={isFetching || isLoading}
+          isLoading={isFetchingNextPage}
+          onClick={() => fetchNextPage()}
+        >
+          Load More
+        </button>
+      )}
     </>
   );
 });

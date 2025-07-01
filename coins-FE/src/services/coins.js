@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 const getCoinsMarkets = async (page) => {
   try {
-    const jsonRes = await fetch("http://localhost:4321/coins");
+    const jsonRes = await fetch(`http://localhost:4321/coins?page=${page}`);
 
     const res = await jsonRes.json();
 

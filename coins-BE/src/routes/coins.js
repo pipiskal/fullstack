@@ -4,7 +4,12 @@ const { getMarkets, getCoinDetails } = require("../lib/coinGecko");
 
 router.get("/", async (req, res, next) => {
   try {
-    const coins = await getMarkets();
+    const page = parseInt(req.query.page) || 1;
+    const itemsPerPage = 50;
+
+    // For simplicity, we are not implementing full pagination in our API as well it will always return 50 coins
+    // But we need to get the next 50 results to implement the load them on the ui
+    const coins = await getMarkets(page, itemsPerPage);
 
     res.json({
       data: coins,

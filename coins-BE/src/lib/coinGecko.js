@@ -8,15 +8,16 @@ const SECONDS_CACHED = 1800;
 
 const ROOT_URL = "https://api.coingecko.com/api/v3/";
 const DEMO_URL_KEY = "x_cg_demo_api_key";
-const CACHE_KEY_FOR_MARKETS = "coin-markets";
 
 const API_KEY = process.env.COINGECKO_API_KEY;
 
 const cache = new NodeCache({ stdTTL: SECONDS_CACHED });
 
-const getMarkets = async () => {
+const getMarkets = async (requestedPage, itemsPerPage) => {
   try {
-    const cached = cache.get(CACHE_KEY_FOR_MARKETS);
+    const cacheKey = `coin-markets-${requestedPage}`;
+
+    const cached = cache.get(cacheKey);
 
     if (cached) {
       console.log("I have cached results for the list of markets!");
@@ -26,7 +27,7 @@ const getMarkets = async () => {
     console.log("I will serve a fresh list of markets!");
 
     const { data } = await axios.get(
-      `${ROOT_URL}/coins/markets?${DEMO_URL_KEY}y=${API_KEY}&per_page=250&vs_currency=usd&precision=2`
+      `${ROOT_URL}/coins/markets?${DEMO_URL_KEY}y=${API_KEY}&per_page=${itemsPerPage}&vs_currency=usd&precision=2&page=${requestedPage}`
     );
 
     const formattedPayload = data.map((coin) => ({
@@ -40,7 +41,7 @@ const getMarkets = async () => {
       price_change_percentage_24h: coin.price_change_percentage_24h,
     }));
 
-    cache.set(CACHE_KEY_FOR_MARKETS, formattedPayload, SECONDS_CACHED);
+    cache.set(cacheKey, formattedPayload, SECONDS_CACHED);
 
     return formattedPayload;
   } catch (error) {
