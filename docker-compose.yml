@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./coins-BE
+      dockerfile: Dockerfile
+    ports:
+      - "4321:4321"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./coins-BE:/app
+      - /app/node_modules
+    command: npm start
+
+  frontend:
+    build:
+      context: ./coins-FE
+      dockerfile: Dockerfile
+    ports:
+      - "4173:4173"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./coins-FE:/app
+      - /app/node_modules
+    command: npm run dev
+    depends_on:
+      - backend
