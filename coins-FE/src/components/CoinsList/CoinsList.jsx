@@ -1,4 +1,4 @@
-import { Wrapper, SimpleText } from "./CoinsList.styles";
+import { Wrapper, SimpleText, LoadMoreButton } from "./CoinsList.styles";
 import CoinPriceCard from "../CoinPriceCard/CoinPriceCard";
 import { CURRENCY_SYMBOL } from "../../common/consts";
 import React from "react";
@@ -75,13 +75,13 @@ const CoinsList = React.memo(({ onClickCoinCard }) => {
       </Wrapper>
 
       {hasNextPage && (
-        <button
+        <LoadMoreButton
           isDisabled={isFetching || isLoading}
           isLoading={isFetchingNextPage}
           onClick={() => fetchNextPage()}
         >
-          Load More
-        </button>
+          {isLoading || isFetching ? "Loading..." : "Load More"}
+        </LoadMoreButton>
       )}
     </>
   );

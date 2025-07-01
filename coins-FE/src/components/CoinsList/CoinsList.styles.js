@@ -29,3 +29,17 @@ export const SimpleText = styled.span`
   color: #fff;
   text-align: center;
 `;
+
+export const LoadMoreButton = styled.button`
+  width: 400px;
+  font-size: 16px;
+  padding: 24px;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #2e3948;
+  background-color: #1e2735;
+  transition: all 0.3s ease;
+  align-self: center;
+  cursor: pointer;
+`;
