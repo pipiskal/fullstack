@@ -69,12 +69,29 @@ export const PriceChangesWrapper = styled.div`
 export const PriceChangesRow = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 16px;
+  border-bottom: ${(props) => (props.$isLast ? "none" : "1px solid #2e3948")};
 `;
 
 export const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 8px;
+`;
+
+export const PriceChangesLabel = styled.span`
+  font-size: 16px;
+  color: #e0e0e0;
+`;
+
+export const TimelineIndicator = styled.span`
+  font-size: 12px;
+  color: #e0e0e0;
+`;
+
+export const TimelineValue = styled.span`
+  font-size: 12px;
+  color: #e0e0e0;
 `;
 
 export const DescriptionHeader = styled.div`
@@ -86,11 +103,4 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 1.5;
   color: #e0e0e0;
-`;
-
-export const SimpleText = styled.span`
-  font-size: 24px;
-  font-weight: 500;
-  color: #fff;
-  text-align: center;
 `;

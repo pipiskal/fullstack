@@ -7,8 +7,10 @@ import {
   PriceChangesWrapper,
   PriceChangesRow,
   CloseButton,
+  TimelineIndicator,
   CurrentPriceLabel,
-  SimpleText,
+  PriceChangesLabel,
+  TimelineValue,
 } from "./CoinFullDetailsCard.styles";
 
 import { IoClose } from "react-icons/io5";
@@ -16,6 +18,7 @@ import { IoClose } from "react-icons/io5";
 import CoinAvatar from "../CoinAvatar/CoinAvatar";
 import PercentagePriceChangeTag from "../PercentagePriceChangeTag/PercentagePriceChangeTag";
 import TwentyFourHoursPriceCard from "../TwentyFourHoursPriceCard/TwentyFourHoursPriceCard";
+import SimpleSkeleton from "../SimpleSkeleton/SimpleSkeleton";
 
 const CoinFullDetailsCard = ({
   currentPrice,
@@ -28,6 +31,7 @@ const CoinFullDetailsCard = ({
   name,
   shortName,
   isLoading,
+  prices_changes_percentage,
 }) => {
   return (
     <Wrapper>
@@ -39,73 +43,57 @@ const CoinFullDetailsCard = ({
         </CloseButton>
       </Header>
 
-      <PriceDetailsWrapper>
-        <CurrentPriceLabel>Current Price</CurrentPriceLabel>
-
-        <FlexRow>
-          <Price>{`${currencySymbol}${currentPrice}`}</Price>
-
-          <PercentagePriceChangeTag
-            percentage={twentyFourPriceChangePercentage}
-          />
-        </FlexRow>
-
-        <FlexRow>
-          <TwentyFourHoursPriceCard
-            type={"high"}
-            currencySymbol={currencySymbol}
-            price={high24h}
-            align="center"
-          />
-
-          <TwentyFourHoursPriceCard
-            type={"low"}
-            currencySymbol={currencySymbol}
-            price={low24h}
-            align="center"
-          />
-        </FlexRow>
-      </PriceDetailsWrapper>
-
-      {/* Diagram will be here */}
-
       {isLoading ? (
-        <SimpleText>Loading...</SimpleText>
+        <SimpleSkeleton height={"500px"} width={"100%"} />
       ) : (
-        <PriceChangesWrapper>
-          <p>Icon Price Changes</p>
+        <>
+          <PriceDetailsWrapper>
+            <CurrentPriceLabel>Current Price</CurrentPriceLabel>
 
-          {/* This will be a map */}
-          <PriceChangesRow>
-            <span>24H</span>
+            <FlexRow>
+              <Price>{`${currencySymbol}${currentPrice}`}</Price>
 
-            <span>+2.45%</span>
-          </PriceChangesRow>
+              <PercentagePriceChangeTag
+                percentage={twentyFourPriceChangePercentage}
+              />
+            </FlexRow>
 
-          <PriceChangesRow>
-            <span>24H</span>
+            <FlexRow>
+              <TwentyFourHoursPriceCard
+                type={"high"}
+                currencySymbol={currencySymbol}
+                price={high24h}
+                align="center"
+              />
 
-            <span>+2.45%</span>
-          </PriceChangesRow>
+              <TwentyFourHoursPriceCard
+                type={"low"}
+                currencySymbol={currencySymbol}
+                price={low24h}
+                align="center"
+              />
+            </FlexRow>
+          </PriceDetailsWrapper>
 
-          <PriceChangesRow>
-            <span>24H</span>
+          {/* A Diagram could be here be here */}
 
-            <span>+2.45%</span>
-          </PriceChangesRow>
+          {prices_changes_percentage.length > 0 && (
+            <PriceChangesWrapper>
+              <PriceChangesLabel>Price Changes</PriceChangesLabel>
 
-          <PriceChangesRow>
-            <span>24H</span>
+              {prices_changes_percentage.map((percentage, index) => (
+                <PriceChangesRow
+                  key={index}
+                  $isLast={index === prices_changes_percentage.length - 1}
+                >
+                  <TimelineIndicator>{percentage.name}</TimelineIndicator>
 
-            <span>+2.45%</span>
-          </PriceChangesRow>
-
-          <PriceChangesRow>
-            <span>24H</span>
-
-            <span>+2.45%</span>
-          </PriceChangesRow>
-        </PriceChangesWrapper>
+                  <TimelineValue> {percentage.value}</TimelineValue>
+                </PriceChangesRow>
+              ))}
+            </PriceChangesWrapper>
+          )}
+        </>
       )}
     </Wrapper>
   );
