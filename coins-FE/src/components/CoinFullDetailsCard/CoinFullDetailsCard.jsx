@@ -8,6 +8,7 @@ import {
   PriceChangesRow,
   CloseButton,
   CurrentPriceLabel,
+  SimpleText,
 } from "./CoinFullDetailsCard.styles";
 
 import { IoClose } from "react-icons/io5";
@@ -26,6 +27,7 @@ const CoinFullDetailsCard = ({
   low24h,
   name,
   shortName,
+  isLoading,
 }) => {
   return (
     <Wrapper>
@@ -67,40 +69,44 @@ const CoinFullDetailsCard = ({
 
       {/* Diagram will be here */}
 
-      <PriceChangesWrapper>
-        <p>Icon Price Changes</p>
+      {isLoading ? (
+        <SimpleText>Loading...</SimpleText>
+      ) : (
+        <PriceChangesWrapper>
+          <p>Icon Price Changes</p>
 
-        {/* This will be a map */}
-        <PriceChangesRow>
-          <span>24H</span>
+          {/* This will be a map */}
+          <PriceChangesRow>
+            <span>24H</span>
 
-          <span>+2.45%</span>
-        </PriceChangesRow>
+            <span>+2.45%</span>
+          </PriceChangesRow>
 
-        <PriceChangesRow>
-          <span>24H</span>
+          <PriceChangesRow>
+            <span>24H</span>
 
-          <span>+2.45%</span>
-        </PriceChangesRow>
+            <span>+2.45%</span>
+          </PriceChangesRow>
 
-        <PriceChangesRow>
-          <span>24H</span>
+          <PriceChangesRow>
+            <span>24H</span>
 
-          <span>+2.45%</span>
-        </PriceChangesRow>
+            <span>+2.45%</span>
+          </PriceChangesRow>
 
-        <PriceChangesRow>
-          <span>24H</span>
+          <PriceChangesRow>
+            <span>24H</span>
 
-          <span>+2.45%</span>
-        </PriceChangesRow>
+            <span>+2.45%</span>
+          </PriceChangesRow>
 
-        <PriceChangesRow>
-          <span>24H</span>
+          <PriceChangesRow>
+            <span>24H</span>
 
-          <span>+2.45%</span>
-        </PriceChangesRow>
-      </PriceChangesWrapper>
+            <span>+2.45%</span>
+          </PriceChangesRow>
+        </PriceChangesWrapper>
+      )}
     </Wrapper>
   );
 };

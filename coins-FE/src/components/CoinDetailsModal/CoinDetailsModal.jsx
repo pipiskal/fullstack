@@ -5,7 +5,7 @@ import { CURRENCY_SYMBOL } from "../../common/consts";
 import { useQuery } from "@tanstack/react-query";
 import COINS from "./../../services/coins";
 
-const CoinDetailsModal = ({ onClose, coin }) => {
+const CoinDetailsModal = ({ onClose, coinFromTheList }) => {
   // The only thing i do not have from the initial call is the Description and the Price change on the last 24 hours, 7 days, 14 days, 1 month, 2 months, 200 days, 1 year
 
   // Since i do not want to overload the Network with my BE , my BE will simply return only the description and the Price change
@@ -19,33 +19,40 @@ const CoinDetailsModal = ({ onClose, coin }) => {
   //   staleTime: 1000 * 60 * 2,
   // });
 
-  const isOpen = Boolean(coin.id);
+  // const coin = {
+  //   id: "1",
+  // };
+
+  const isOpen = Boolean(coinFromTheList.name);
 
   return (
     <ModalOverlay $isVisible={isOpen}>
       <ModalContent $isVisible={isOpen} onClick={(e) => e.stopPropagation()}>
-        {/* {!coin && isLoading && <p>Loading...</p>}
+        {/* The components can reduce the props size by passing grouped object that make business sense/ For now its ok like that */}
 
-        {!coin && !isLoading && <p>Results not found 404</p>}
+        {/* Now since we use the already fetched data from the list We can handle potential errors only  for the description and the price change */}
 
-        {!isLoading && !isFetching && isError && (
-          <p>There was an error we check it</p>
-        )} */}
-        {coin && (
-          <CoinFullDetailsCard
-            onClose={onClose}
-            currentPrice={coin.current_price}
-            currencySymbol={CURRENCY_SYMBOL}
-            name={coin.name}
-            shortName={coin.symbol}
-            image={coin.image}
-            twentyFourPriceChangePercentage={Number(
-              coin.price_change_percentage_24h.toFixed(2)
-            )}
-            high24h={coin.high_24h}
-            low24h={coin.low_24h}
-          />
-        )}
+        {/* all loading errors or event Error Boundaries just for that small specific part */}
+
+        {/* For production we should handle everything but for now i will simply add a loading message */}
+
+        <CoinFullDetailsCard
+          onClose={onClose}
+          currentPrice={coinFromTheList.current_price}
+          currencySymbol={CURRENCY_SYMBOL}
+          name={coinFromTheList.name}
+          shortName={coinFromTheList.symbol}
+          image={coinFromTheList.image}
+          high24h={coinFromTheList.high_24h}
+          low24h={coinFromTheList.low_24h}
+          twentyFourPriceChangePercentage={Number(
+            coinFromTheList.price_change_percentage_24h.toFixed(2)
+          )}
+          isLoading={true}
+
+          // Add the last 7 days, 14 days, 1 month, 2 months, 200 days, 1 year
+          // Add the description
+        />
       </ModalContent>
     </ModalOverlay>
   );

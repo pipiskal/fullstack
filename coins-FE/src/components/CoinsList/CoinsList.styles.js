@@ -22,3 +22,10 @@ export const Wrapper = styled.div`
     padding: 0 8px;
   }
 `;
+
+export const SimpleText = styled.span`
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+`;

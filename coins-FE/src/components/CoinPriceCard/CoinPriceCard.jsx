@@ -24,7 +24,7 @@ const CoinPriceCard = ({
   isDisabled,
 }) => {
   return (
-    <Wrapper onClick={onClickCard}>
+    <Wrapper onClick={onClickCard} $isDisabled={isDisabled}>
       <TitleAndPriceChangePercentage>
         <CoinAvatar image={image} shortName={shortName} name={name} />
 

@@ -87,3 +87,10 @@ export const Description = styled.p`
   line-height: 1.5;
   color: #e0e0e0;
 `;
+
+export const SimpleText = styled.span`
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+`;

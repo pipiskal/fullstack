@@ -11,10 +11,12 @@ export const Wrapper = styled.div`
   padding: 24px 32px;
   border-radius: 14px;
   border: 1px solid #2e3948;
-  background-color: #171f2c;
+  background-color: ${(props) => (props.$isDisabled ? "#1e2735" : "#171f2c")};
+  pointer-events: ${(props) => (props.$isDisabled ? "none" : "auto")};
+  opacity: ${(props) => (props.$isDisabled ? 0.7 : 1)};
   transition: all 0.3s ease;
-  cursor: pointer;
   user-select: none;
+  cursor: pointer;
 
   &:hover {
     border: 1px solid #3e4b5a;
