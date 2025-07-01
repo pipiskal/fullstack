@@ -90,7 +90,7 @@ const CoinFullDetailsCard = ({
                 >
                   <TimelineIndicator>{percentage.name}</TimelineIndicator>
 
-                  <TimelineValue> {percentage.value}</TimelineValue>
+                  <TimelineValue> {`${percentage.value} %`}</TimelineValue>
                 </PriceChangesRow>
               ))}
             </PriceChangesWrapper>

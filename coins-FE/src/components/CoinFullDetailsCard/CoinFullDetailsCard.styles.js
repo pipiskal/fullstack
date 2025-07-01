@@ -115,6 +115,7 @@ export const TimelineIndicator = styled.span`
 export const TimelineValue = styled.span`
   font-size: 12px;
   color: #e0e0e0;
+  font-weight: bolder;
 `;
 
 export const DescriptionHeader = styled.div`

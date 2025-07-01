@@ -6,7 +6,7 @@ This application displays a comprehensive list of cryptocurrency prices with det
 
 ## ✨ Tools
 
-- **Frontend**: Used tanstack query (cause i use it in my day to day life and also to not implement custom infinite load more, to earn some time.) For the FE thats pretty much it just pure React and Styled components All custom.
+- **Frontend**: Used tanstack query (cause i use it in my day to day life and also to not implement custom infinite load more, to earn some time.) For the FE thats pretty much it just pure React and Styled components All custom - Has some issues with scrolling and with full mobile support but for a demo its ok.
 
 - **Backend**: Used Node-Cache for caching. I could have used Redis but for the scope of the project and to not over engineer it i went with Node-Cache. For the BE thats pretty much it just pure Node and Express. I justed wanted it to work. Most likely i could do more with rate limiting etc. better error handling. More production ready code
 
