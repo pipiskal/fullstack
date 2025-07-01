@@ -713,23 +713,20 @@ const COINS = [
 const App = () => {
   const [selectedCoinId, setSelectedCoinId] = useState(null);
 
-  const handleClickCoinCard = (coinId) => {
-    setSelectedCoinId(coinId);
-  };
-
   return (
     <Wrapper>
       <Title>Coins Price List </Title>
 
-      <CoinsList coins={COINS} onClickCoinCard={handleClickCoinCard} />
+      <CoinsList
+        coins={COINS}
+        onClickCoinCard={(coinId) => setSelectedCoinId(coinId)}
+      />
 
       <CoinDetailsModal
+        coinId={selectedCoinId}
         isOpen={Boolean(selectedCoinId)}
         onClose={() => setSelectedCoinId(null)}
-      >
-        <h2>Simple Modal</h2>
-        <p>This is a clean, minimalist modal with transparent background.</p>
-      </CoinDetailsModal>
+      />
     </Wrapper>
   );
 };

@@ -12,26 +12,25 @@ const scaleIn = keyframes`
 
 export const ModalOverlay = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 2;
   animation: ${({ $isVisible }) => $isVisible && fadeIn} 0.2s ease-out;
   animation-fill-mode: forwards;
 `;
 
 export const ModalContent = styled.div`
-  background: white;
-  padding: 32px;
-  border-radius: 8px;
   position: relative;
-  max-width: 90%;
   max-height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
   overflow: auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   animation: ${({ $isVisible }) => $isVisible && scaleIn} 0.2s ease-out;

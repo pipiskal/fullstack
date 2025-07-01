@@ -25,12 +25,7 @@ const CoinPriceCard = ({
   return (
     <Wrapper onClick={onClickCard}>
       <TitleAndPriceChangePercentage>
-        <CoinAvatar
-          image={image}
-          title={name}
-          shortName={shortName}
-          name={name}
-        />
+        <CoinAvatar image={image} shortName={shortName} name={name} />
 
         <PercentagePriceChangeTag
           percentage={twentyFourPriceChangePercentage}
