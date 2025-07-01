@@ -46,7 +46,7 @@ const CoinFullDetailsCard = ({
       </Header>
 
       {isLoading ? (
-        <SimpleSkeleton height={"560px"} width={"100%"} />
+        <SimpleSkeleton height={"580px"} width={"100%"} />
       ) : (
         <>
           <PriceDetailsWrapper>

@@ -7,8 +7,11 @@ router.get("/", async (req, res, next) => {
     const page = parseInt(req.query.page) || 1;
     const itemsPerPage = 50;
 
-    // For simplicity, we are not implementing full pagination in our API as well it will always return 50 coins
+    // For simplicity, we are not implementing full pagination in our API as well we will coin Gecko pagination
     // But we need to get the next 50 results to implement the load them on the ui
+
+    // We could get a huge chunk for example all 250 that are permitted and and our own pagination on top.
+
     const coins = await getMarkets(page, itemsPerPage);
 
     res.json({
