@@ -6,9 +6,11 @@ This application displays a comprehensive list of cryptocurrency prices with det
 
 ## ✨ Tools
 
-- **Frontend**: Used tanstack query (cause i use it in my day to day life and also to not implement custom infinite load more functionality to earn some time.) For the FE thats pretty much it just pure React and Styled components All custom.
+- **Frontend**: Used tanstack query (cause i use it in my day to day life and also to not implement custom infinite load more, to earn some time.) For the FE thats pretty much it just pure React and Styled components All custom.
 
 - **Backend**: Used Node-Cache for caching. I could have used Redis but for the scope of the project and to not over engineer it i went with Node-Cache. For the BE thats pretty much it just pure Node and Express. I justed wanted it to work. Most likely i could do more with rate limiting etc. better error handling. More production ready code
+
+- **Comments**: Typescript would be extremely useful but for the scope of the project it was not necessary(Would have taken more time - but it was a complex api with a ton of data so in a real world scenario i totally recommend it).
 
 ## 🏗️ Architecture
 
@@ -16,9 +18,13 @@ This application displays a comprehensive list of cryptocurrency prices with det
 
 - Main Idea is to Keep the components pure. Break everything to make sense and be reusable.
 
-- have 1 place that hold the logic and keep the logic close where its needed
+- Have 1 place that hold the logic and keep the logic close where its needed
 
 - upLift the state in the case of the modal cause i do not want to map the modal over and over again.
+
+- I could have created a main theme that i could extract the colors, spacing etc. Thats what i do in production but for this case hardcoded everything.
+
+- Styled components also provides a nice Context wrapper to get the styles from there if customized
 
 ### Backend (coins-BE)
 
@@ -117,14 +123,10 @@ cd coins-FE && npm run dev
 - Efficient re-rendering with proper key props
 - Skeleton loading states for better UX
 
-## 🔧 Configuration
-
-### Environment Variables
-
 ## 🎨 Design Philosophy
 
 Stole the colors from the Main site and got inspiration from that.
-The rest of the design its just me
+The rest of the design its just me.
 
 ## 📄 License
 
