@@ -1,12 +1,7 @@
 const axios = require("axios");
 const NodeCache = require("node-cache");
 
-// const SECONDS_CACHED = 120; // 2 minutes
-
-// cache them for 30 minutes just so i wont spam the server
-const SECONDS_CACHED = 1800;
-
-// const SECONDS_CACHED = 5;
+const SECONDS_CACHED = 120; // 2 minutes
 
 const ROOT_URL = "https://api.coingecko.com/api/v3/";
 const DEMO_URL_KEY = "x_cg_demo_api_key";

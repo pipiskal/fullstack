@@ -12,6 +12,7 @@ const App = () => {
 
       <CoinsList onClickCoinCard={(coin) => setSelectedCoin(coin)} />
 
+      {/* We do not want to map the Modal component in each coin card. Thats why it gets rendered here. */}
       {selectedCoin?.id && (
         <CoinDetailsModal
           coinFromTheList={selectedCoin}

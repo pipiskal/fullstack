@@ -3,6 +3,7 @@ import CoinFullDetailsCard from "../CoinFullDetailsCard/CoinFullDetailsCard";
 import { CURRENCY_SYMBOL } from "../../common/consts";
 import { useQuery } from "@tanstack/react-query";
 import COINS from "./../../services/coins";
+import { getFormattedPrice } from "./../../common/helpers";
 
 const CoinDetailsModal = ({ onClose, coinFromTheList }) => {
   // The only thing i do not have from the initial call is the Description and the Price change on the last 24 hours, 7 days, 14 days, 1 month, 2 months, 200 days, 1 year
@@ -15,13 +16,12 @@ const CoinDetailsModal = ({ onClose, coinFromTheList }) => {
     enabled: Boolean(coinFromTheList.id),
     queryKey: ["coin-details-by-id", coinFromTheList.id],
     queryFn: () => COINS.GET_COIN_DETAILS_BY_ID(coinFromTheList.id),
-    // Fetch after 2 minutes
+    // Fetch after 2 minutes keep so the loading skeleton wont appear all the time if the user hits the same coin card each time
+    // Can always change depending on the importance of the real data
     staleTime: 1000 * 60 * 2,
   });
 
   const isOpen = Boolean(coinFromTheList.id);
-
-  // console.log("data", data);
 
   // Can also handle errors with isError and more.
 
@@ -31,8 +31,6 @@ const CoinDetailsModal = ({ onClose, coinFromTheList }) => {
     name: key,
     value: Number(value.toFixed(2)),
   }));
-
-  console.log("pricesChangesPercentage", pricesChangesPercentage);
 
   return (
     <ModalOverlay $isVisible={isOpen}>
@@ -47,7 +45,7 @@ const CoinDetailsModal = ({ onClose, coinFromTheList }) => {
 
         <CoinFullDetailsCard
           onClose={onClose}
-          currentPrice={data?.current_price || 0}
+          currentPrice={getFormattedPrice(data?.current_price || 0)}
           currencySymbol={CURRENCY_SYMBOL}
           name={coinFromTheList.name}
           shortName={coinFromTheList.symbol}

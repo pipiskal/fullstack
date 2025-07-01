@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  max-width: 500px;
+  max-width: 600px;
+  min-height: 500px;
+  max-height: 700px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,9 +11,29 @@ export const Wrapper = styled.div`
   border: 1px solid #2e3948;
   border-radius: 10px;
   user-select: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    margin: 100px 0;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(51, 58, 86);
+    border-radius: 10px;
+  }
 `;
 
 export const Header = styled.div`
+  position: sticky;
+  top: 0;
+  background-color: #171f2c;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,6 +103,7 @@ export const DescriptionWrapper = styled.div`
 
 export const PriceChangesLabel = styled.span`
   font-size: 16px;
+  padding: 16px;
   color: #e0e0e0;
 `;
 
@@ -100,7 +123,7 @@ export const DescriptionHeader = styled.div`
 `;
 
 export const Description = styled.p`
+  padding: 24px;
   font-size: 14px;
-  line-height: 1.5;
   color: #e0e0e0;
 `;

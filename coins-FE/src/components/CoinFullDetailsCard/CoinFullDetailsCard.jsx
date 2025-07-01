@@ -11,6 +11,7 @@ import {
   CurrentPriceLabel,
   PriceChangesLabel,
   TimelineValue,
+  Description,
 } from "./CoinFullDetailsCard.styles";
 
 import { IoClose } from "react-icons/io5";
@@ -32,6 +33,7 @@ const CoinFullDetailsCard = ({
   shortName,
   isLoading,
   prices_changes_percentage,
+  description,
 }) => {
   return (
     <Wrapper>
@@ -44,7 +46,7 @@ const CoinFullDetailsCard = ({
       </Header>
 
       {isLoading ? (
-        <SimpleSkeleton height={"500px"} width={"100%"} />
+        <SimpleSkeleton height={"560px"} width={"100%"} />
       ) : (
         <>
           <PriceDetailsWrapper>
@@ -93,6 +95,8 @@ const CoinFullDetailsCard = ({
               ))}
             </PriceChangesWrapper>
           )}
+
+          {description && <Description>{description}</Description>}
         </>
       )}
     </Wrapper>

@@ -4,8 +4,11 @@ import { CURRENCY_SYMBOL } from "../../common/consts";
 import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import COINS from "./../../services/coins";
+import { getFormattedPrice } from "./../../common/helpers";
 
 const CoinsList = React.memo(({ onClickCoinCard }) => {
+  // From here
+
   const {
     data,
     isLoading,
@@ -27,6 +30,8 @@ const CoinsList = React.memo(({ onClickCoinCard }) => {
 
   const coins = data?.pages?.flatMap((page) => page) || [];
 
+  // To here, You can encapsulate this logic in a custom hook if you want. But the file is already small enough so no need.
+
   if (isLoading && coins.length === 0) {
     return <SimpleText>Loading Coins...</SimpleText>;
   }
@@ -43,11 +48,7 @@ const CoinsList = React.memo(({ onClickCoinCard }) => {
             coin.price_change_percentage_24h.toFixed(2)
           );
 
-          const formattedPrice = Intl.NumberFormat("en-US", {
-            style: "decimal",
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          }).format(coin.current_price);
+          const formattedPrice = getFormattedPrice(coin.current_price);
 
           return (
             <CoinPriceCard
