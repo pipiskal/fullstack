@@ -1,11 +1,15 @@
 import { Wrapper, Title, Description } from "./TwentyFourHoursPriceCard.styles";
 
-const TwentyFourHoursPriceCard = ({ type, price, currencySymbol }) => {
-  const title =
-    type === "high" ? "24 Hours Highest Price" : "24 Hours Lowest Price";
+const TwentyFourHoursPriceCard = ({
+  type,
+  price,
+  currencySymbol,
+  align = "left",
+}) => {
+  const title = type === "high" ? "24H High" : "24H Low";
 
   return (
-    <Wrapper>
+    <Wrapper $align={align}>
       <Title>{title}</Title>
 
       <Description type={type}>{`${currencySymbol}${price}`}</Description>

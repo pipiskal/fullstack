@@ -6,7 +6,9 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 12px;
-  padding: 12px;
+  padding: 16px 32px;
+  align-items: ${(props) =>
+    props.$align === "left" ? "flex-start" : "center"};
 `;
 
 export const Title = styled.p`

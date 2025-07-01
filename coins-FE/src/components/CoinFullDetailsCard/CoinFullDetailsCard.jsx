@@ -6,6 +6,8 @@ import {
   Header,
   PriceChangesWrapper,
   PriceChangesRow,
+  CloseButton,
+  CurrentPriceLabel,
 } from "./CoinFullDetailsCard.styles";
 
 import { IoClose } from "react-icons/io5";
@@ -22,19 +24,21 @@ const CoinFullDetailsCard = ({
   image,
   high24h,
   low24h,
+  name,
+  shortName,
 }) => {
   return (
     <Wrapper>
       <Header>
-        <CoinAvatar image={image} shortName={"btc"} name={"takis"} />
+        <CoinAvatar image={image} shortName={shortName} name={name} />
 
-        {/* <CloseButton onClick={onClose}> */}
-        <IoClose size={24} onClick={onClose} />
-        {/* </CloseButton> */}
+        <CloseButton>
+          <IoClose size={28} onClick={onClose} />
+        </CloseButton>
       </Header>
 
       <PriceDetailsWrapper>
-        <span>Current Price</span>
+        <CurrentPriceLabel>Current Price</CurrentPriceLabel>
 
         <FlexRow>
           <Price>{`${currencySymbol}${currentPrice}`}</Price>
@@ -49,12 +53,14 @@ const CoinFullDetailsCard = ({
             type={"high"}
             currencySymbol={currencySymbol}
             price={high24h}
+            align="center"
           />
 
           <TwentyFourHoursPriceCard
             type={"low"}
             currencySymbol={currencySymbol}
             price={low24h}
+            align="center"
           />
         </FlexRow>
       </PriceDetailsWrapper>

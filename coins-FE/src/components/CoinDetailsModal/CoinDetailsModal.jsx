@@ -1,5 +1,6 @@
 import { ModalOverlay, ModalContent } from "./CoinDetailsModal.styles";
 import CoinFullDetailsCard from "../CoinFullDetailsCard/CoinFullDetailsCard";
+import { CURRENCY_SYMBOL } from "../../common/consts";
 
 const CoinDetailsModal = ({ isOpen, onClose, coinId }) => {
   if (!isOpen) return null;
@@ -16,7 +17,7 @@ const CoinDetailsModal = ({ isOpen, onClose, coinId }) => {
     price_change_percentage_24h: 0.37253,
   };
 
-  // Will fetch the results by id.
+  console.log("Will fetch the results by id.", coinId);
 
   return (
     <ModalOverlay $isVisible={isOpen}>
@@ -24,10 +25,13 @@ const CoinDetailsModal = ({ isOpen, onClose, coinId }) => {
         <CoinFullDetailsCard
           onClose={onClose}
           currentPrice={coin.current_price}
-          currencySymbol={coin.symbol}
+          currencySymbol={CURRENCY_SYMBOL}
           name={coin.name}
+          shortName={coin.symbol}
           image={coin.image}
-          priceChangePercentage={coin.price_change_percentage_24h}
+          twentyFourPriceChangePercentage={Number(
+            coin.price_change_percentage_24h.toFixed(2)
+          )}
           high24h={coin.high_24h}
           low24h={coin.low_24h}
         />

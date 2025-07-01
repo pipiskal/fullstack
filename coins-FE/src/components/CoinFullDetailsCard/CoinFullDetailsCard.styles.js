@@ -5,10 +5,9 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
   background-color: #171f2c;
-  border-radius: 10px;
   border: 1px solid #2e3948;
+  border-radius: 10px;
 `;
 
 export const Header = styled.div`
@@ -17,19 +16,41 @@ export const Header = styled.div`
   align-items: center;
   padding: 24px;
   border-bottom: 1px solid #2e3948;
+  margin-bottom: 24px;
+`;
+
+export const CloseButton = styled.div`
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f8f8f8;
+  cursor: pointer;
 `;
 
 export const PriceDetailsWrapper = styled.div`
+  max-width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 24px;
+  padding: 0 8px;
+  align-self: center;
 `;
 
 export const FlexRow = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: center;
   gap: 16px;
+  margin-bottom: 24px;
+`;
+
+export const CurrentPriceLabel = styled.span`
+  font-size: 12px;
+  color: #e0e0e0;
+  margin-bottom: 4px;
 `;
 
 export const Price = styled.span`
