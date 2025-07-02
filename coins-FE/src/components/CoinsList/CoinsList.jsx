@@ -44,8 +44,13 @@ const CoinsList = React.memo(({ onClickCoinCard }) => {
     <>
       <Wrapper>
         {coins.map((coin) => {
+          console.log(
+            "coin.price_change_percentage_24h",
+            coin.price_change_percentage_24h
+          );
+
           const last24HoursPercentage = Number(
-            coin.price_change_percentage_24h.toFixed(2)
+            coin.price_change_percentage_24h?.toFixed(2) || 0
           );
 
           const formattedPrice = getFormattedPrice(coin.current_price);

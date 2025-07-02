@@ -1,6 +1,8 @@
+const BE_URL = import.meta.env.VITE_BE_URL;
+
 const getCoinsMarkets = async (page) => {
   try {
-    const jsonRes = await fetch(`http://localhost:4321/coins?page=${page}`);
+    const jsonRes = await fetch(`${BE_URL}/coins?page=${page}`);
 
     const res = await jsonRes.json();
 
@@ -14,7 +16,7 @@ const getCoinsMarkets = async (page) => {
 
 const getCoinDetailsById = async (id) => {
   try {
-    const jsonRes = await fetch(`http://localhost:4321/coins/${id}`);
+    const jsonRes = await fetch(`${BE_URL}/coins/${id}`);
 
     const res = await jsonRes.json();
 
